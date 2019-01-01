@@ -1,0 +1,31 @@
+def collatz(num):
+  #helper function for the counter, this iterates the given value to the next in the  sequence
+  if num % 2 == 0:
+    rNum = num / 2
+    return rNum
+  else: 
+    rNum = num * 3 + 1
+    return rNum
+
+def collatzCounter(num):
+  #counts the number of times it goes through the sequence
+  count = 0 
+  total = num
+  while total > 1:
+    total = collatz(total)
+    count = count + 1
+  return count
+#print(collatzCounter(13))
+
+
+longest = 0 
+longestCount = 0
+current = 0 
+new = 0
+for current in range (1000000):
+  new = collatzCounter(current)
+  if new > longestCount:
+    longestCount = new
+    longest = current
+print(longest)
+print(longestCount)
